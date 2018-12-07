@@ -44,17 +44,17 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       poll: config.dev.poll,
     }
   },
-  plugins: [
-    new webpack.DefinePlugin({
-      'process.env': require('../config/dev.env')
+  plugins: [   // webpack插件
+    new webpack.DefinePlugin({   //编译时配置的全局变量
+      'process.env': require('../config/dev.env')    // 定义了一个'process.env'
     }),
-    new webpack.HotModuleReplacementPlugin(),
+    new webpack.HotModuleReplacementPlugin(),      // 热更新插件
     new webpack.NamedModulesPlugin(), // HMR shows correct file names in console on update.
-    new webpack.NoEmitOnErrorsPlugin(),
+    new webpack.NoEmitOnErrorsPlugin(),   // 插件不触发错误，即不影响编译后的包运行？
     // https://github.com/ampedandwired/html-webpack-plugin
-    new HtmlWebpackPlugin({
-      filename: 'index.html',
-      template: 'index.html',
+    new HtmlWebpackPlugin({       // 自动成成html文件
+      filename: 'index.html',     // 生成的文件名
+      template: 'index.html',     // 模板
       inject: true
     }),
     // copy custom static assets
